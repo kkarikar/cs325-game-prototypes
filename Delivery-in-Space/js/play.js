@@ -91,7 +91,7 @@ return {
   update: function () {
 
     game.physics.arcade.overlap(this.bullets, this.aliens, this.collisionHandler, null, this);
-    game.physics.arcade.overlap(this.bullets, this.sprite, this.killSprite, game.state.start('lose'), this);
+    game.physics.arcade.overlap(this.bullets, this.sprite, this.killSprite, null, this);
 
 
     if (this.cursors.up.isDown)
@@ -161,7 +161,7 @@ collisionHandler: function (ship, bullet) {
 killSprite: function (player, letter) {
   letter.kill();
   player.kill();
-  var winLabel = game.add.text(80, 80, 'You Lose...', {font: '50px Arial', fill: '#00FF00'});
+  var winLabel = game.add.text(80, 80, 'You lost...', {font: '50px Arial', fill: '#00FF00'});
 },
 
   Win: function () {
