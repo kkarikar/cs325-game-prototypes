@@ -161,7 +161,7 @@ collisionHandler: function (ship, bullet) {
 killSprite: function (player, letter) {
   letter.kill();
   player.kill();
-  var winLabel = game.add.text(80, 80, 'You lost...', {font: '50px Arial', fill: '#00FF00'});
+  var winLabel = game.add.text(80, 80, 'You lost... try again by refreshing', {font: '50px Arial', fill: '#00FF00'});
 },
 
   Win: function () {
