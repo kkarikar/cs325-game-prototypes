@@ -115,7 +115,8 @@ function create() {
     // Add music
     music = game.add.audio('darkWind');
     music.play();
-		music.loop = true;
+    music.loopFull();
+
 
     //var help = game.add.text(1085, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
     //help.fixedToCamera = true;
