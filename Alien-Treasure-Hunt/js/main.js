@@ -106,13 +106,6 @@ function create() {
     game.physics.arcade.enable(npc10);
     npc10.body.immovable = true;
 
-    // sprite = game.add.sprite(260, 100, 'phaser');
-    // sprite.anchor.set(0.5);
-
-    // game.physics.arcade.enable(sprite);
-
-    //  This adjusts the collision body size.
-    // sprite.body.setSize(32, 32, 0, 0);
     player.body.setSize(10, 14, 2, 1);
 
     game.camera.follow(player);
@@ -124,12 +117,13 @@ function create() {
     music.play();
 		music.loop = true;
 
-    //var help = game.add.text(16, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
+    //var help = game.add.text(1085, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
     //help.fixedToCamera = true;
 
     scoreString = 'Score: ';
-		scoreText = game.add.text(16, 16, scoreString + score, {font: '34px Impact'});
+		scoreText = game.add.text(16, 16, scoreString + score, {font: '14px Arial'});
 		scoreText.addColor('#fff', 0);
+    scoreText.fixedToCamera = true;
 }
 
 function update() {
