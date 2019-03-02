@@ -173,6 +173,11 @@ function update() {
     {
       player.animations.stop();
     }
+
+    if (score == 340) {
+      var winLabel = game.add.text(80, 80, 'You Won!', {font: '50px Arial', fill: '#00FF00'});
+      winLabel.fixedToCamera = true;
+    }
 }
 
 function collideWithNPC1(player, npc1)
