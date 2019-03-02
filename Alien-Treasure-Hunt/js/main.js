@@ -24,6 +24,7 @@ function preload() {
     game.load.image('npc10', 'assets/gold/10.png');
 
     game.load.audio('darkWind','assets/audio/DarkWinds.mp3');
+    game.load.audio('coin', 'assets/audio/coin.wav');
 
   //  game.load.audio('jeopardy', 'assets/jeopardy.mp3');
 
@@ -41,6 +42,7 @@ var scoreText;
 var layer;
 var player;
 var music;
+var coinMusic;
 
 function create() {
 
@@ -117,9 +119,7 @@ function create() {
     music.play();
     music.loopFull();
 
-
-    //var help = game.add.text(1085, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
-    //help.fixedToCamera = true;
+    coinMusic = game.add.audio('coin');
 
     scoreString = 'Score: ';
 		scoreText = game.add.text(16, 16, scoreString + score, {font: '14px Arial'});
@@ -141,12 +141,8 @@ function update() {
     game.physics.arcade.overlap(player, npc8, collideWithNPC8, null, this);
     game.physics.arcade.overlap(player, npc9, collideWithNPC9, null, this);
     game.physics.arcade.overlap(player, npc10, collideWithNPC10, null, this);
-    // game.physics.arcade.overlap(player, this.coin2, collectCoin2, null, this);
-    // game.physics.arcade.overlap(player, this.coin3, collectCoin3, null, this);
 
     player.body.velocity.set(0);
-    // sprite.body.velocity.y = 0;
-    // sprite.body.angularVelocity = 0;
 
     if (cursors.left.isDown)
     {
@@ -184,71 +180,73 @@ function update() {
 function collideWithNPC1(player, npc1)
 {
         npc1.kill();
+        coinMusic.play();
         score += 10;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC2(player, npc2)
 {
         npc2.kill();
+        coinMusic.play();
         score += 10;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC3(player, npc3)
 {
         npc3.kill();
+        coinMusic.play();
         score += 10;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC4(player, npc4)
 {
         npc4.kill();
+        coinMusic.play();
         score += 10;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC5(player, npc5)
 {
         npc5.kill();
+        coinMusic.play();
         score += 20;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC6(player, npc6)
 {
         npc6.kill();
+        coinMusic.play();
         score += 30;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC7(player, npc7)
 {
         npc7.kill();
+        coinMusic.play();
         score += 40;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC8(player, npc8)
 {
         npc8.kill();
+        coinMusic.play();
         score += 50;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC9(player, npc9)
 {
         npc9.kill();
+        coinMusic.play();
         score += 60;
         scoreText.text = scoreString + score;
 }
 function collideWithNPC10(player, npc10)
 {
         npc10.kill();
+        coinMusic.play();
         score += 100;
         scoreText.text = scoreString + score;
 }
-
-//
-// function collectCoin(player, coin) {
-//
-//     coin.kill();
-//
-// }
-//
  function render() {
 
   //  game.debug.body(player);
