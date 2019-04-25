@@ -8,6 +8,19 @@ GameStates.makePlay = function(game, shared) {
   var map;
   var npc1, npc2, npc3, npc4, npc5, npc6, npc7, npc8, npc9, npc10;
   var bad1, bad2, bad3, bad4, bad5, bad6, bad7, bad8, bad9, bad10;
+
+  var gem1, gem2, gem3, gem4, gem5;
+  var gbad1, gbad2, gbad3, gbad4, gbad5;
+  var closeButtonG1, closeButtonG2, closeButtonG3, closeButtonG4, closeButtonG5;
+  var closeButtonA1, closeButtonA2, closeButtonA3, closeButtonA4, closeButtonA5;
+  var closeButtonB1, closeButtonB2, closeButtonB3, closeButtonB4, closeButtonB5;
+  var tweeng1, tweeng2, tweeng3, tweeng4, tweeng5;
+  var question1, question2, question3, question4, question5;
+  var optionA1, optionA2, optionA3, optionA4, optionA5;
+  var optionB1, optionB2, optionB3, optionB4, optionB5;
+  var win1, win2, win3, win4, win5;
+  var lose1, lose2, lose3, lose4, lose5;
+
   var tween, tween1, tween2, tween3, tween4, tween5, tween6,tween7, tween8, tween9, tween10;
   var popup1, popup2, popup3, popup4, popup5, popup6, popup7, popup8, popup9, popup10;
   var closeButton1, closeButton2, closeButton3, closeButton4, closeButton5, closeButton6, closeButton7, closeButton8, closeButton9, closeButton10;
@@ -85,6 +98,45 @@ return {
       game.physics.arcade.enable(npc10);
       npc10.body.immovable = true;
 
+//gems
+      gem1 = game.add.sprite(650, 360, 'gem1');
+      game.physics.arcade.enable(gem1);
+      gem1.body.immovable = true;
+
+      gem2 = game.add.sprite(830, 200, 'gem2');
+      game.physics.arcade.enable(gem2);
+      gem2.body.immovable = true;
+
+      gem3 = game.add.sprite(1555, 250, 'gem3');
+      game.physics.arcade.enable(gem3);
+      gem3.body.immovable = true;
+
+      gem4 = game.add.sprite(210, 850, 'gem4');
+      game.physics.arcade.enable(gem4);
+      gem4.body.immovable = true;
+
+      gem5 = game.add.sprite(250, 540, 'gem5');
+      game.physics.arcade.enable(gem5);
+      gem5.body.immovable = true;
+
+      //baddies for gems
+      gbad1 = game.add.sprite(590, 320, 'gbad1');
+      tween = game.add.tween(gbad1).to({ x: 520 }, 700, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+      gbad2 = game.add.sprite(865, 195, 'gbad2');
+      tween = game.add.tween(gbad2).to({ x: 770 }, 900, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+      gbad3 = game.add.sprite(1605, 180, 'gbad3');
+      tween = game.add.tween(gbad3).to({ x: 1455 }, 650, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+      gbad4 = game.add.sprite(200, 900, 'gbad4');
+      tween = game.add.tween(gbad4).to({ x: 260 }, 900, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+      gbad5 = game.add.sprite(230, 530, 'gbad5');
+      tween = game.add.tween(gbad5).to({ x: 280 }, 900, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+
+      //baddies for gold
       bad1 = game.add.sprite(260, 240, 'bad1');
       tween = game.add.tween(bad1).to({ x: 315 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
@@ -132,6 +184,204 @@ return {
   		scoreText = game.add.text(16, 16, scoreString + score, {font: '14px Arial'});
   		scoreText.addColor('#fff', 0);
       scoreText.fixedToCamera = true;
+
+      //questions
+      question1 = game.add.sprite(650, 360, 'question1');
+      question1.anchor.set(0.5);
+      question1.inputEnabled = true;
+      question1.input.enableDrag();
+      closeButtonG1 = game.make.sprite((question1.width / 2) - 30, - (question1.height / 2) - 8, 'close');
+      optionA1 = game.make.sprite((question1.width / 4) - 525, - (question1.height / 4) + 60, 'close');
+      optionB1 = game.make.sprite((question1.width / 4) - 525, - (question1.height / 4) + 130, 'close');
+      closeButtonG1.inputEnabled = true;
+      optionA1.inputEnabled = true;
+      optionB1.inputEnabled = true;
+      closeButtonG1.input.priorityID = 1;
+      optionA1.input.priorityID = 1;
+      optionB1.input.priorityID = 1;
+      question1.addChild(closeButtonG1);
+      question1.addChild(optionA1);
+      question1.addChild(optionB1);
+      question1.scale.set(0);
+
+      win1 = game.add.sprite(650, 360, 'win1');
+      win1.anchor.set(0.5);
+      win1.inputEnabled = true;
+      win1.input.enableDrag();
+      closeButtonA1 = game.make.sprite((win1.width / 2) - 30, - (win1.height / 2) - 8, 'close');
+      closeButtonA1.inputEnabled = true;
+      closeButtonA1.input.priorityID = 1;
+      win1.addChild(closeButtonA1);
+      win1.scale.set(0);
+
+      lose1 = game.add.sprite(650, 360, 'lose1');
+      lose1.anchor.set(0.5);
+      lose1.inputEnabled = true;
+      lose1.input.enableDrag();
+      closeButtonB1 = game.make.sprite((lose1.width / 2) - 30, - (lose1.height / 2) - 8, 'close');
+      closeButtonB1.inputEnabled = true;
+      closeButtonB1.input.priorityID = 1;
+      lose1.addChild(closeButtonB1);
+      lose1.scale.set(0);
+
+
+      //question 2
+      question2 = game.add.sprite(830, 200, 'question2');
+      question2.anchor.set(0.5);
+      question2.inputEnabled = true;
+      question2.input.enableDrag();
+      closeButtonG2 = game.make.sprite((question1.width / 2) + 450, - (question1.height / 2) - 150, 'close');
+      optionA2 = game.make.sprite((question1.width / 4) - 480, - (question1.height / 4) + 30, 'close');
+      optionB2 = game.make.sprite((question1.width / 4) - 480, - (question1.height / 4) + 100, 'close');
+      closeButtonG2.inputEnabled = true;
+      optionA2.inputEnabled = true;
+      optionB2.inputEnabled = true;
+      closeButtonG2.input.priorityID = 1;
+      optionA2.input.priorityID = 1;
+      optionB2.input.priorityID = 1;
+      question2.addChild(closeButtonG2);
+      question2.addChild(optionA2);
+      question2.addChild(optionB2);
+      question2.scale.set(0);
+
+      win2 = game.add.sprite(830, 200, 'win2');
+      win2.anchor.set(0.5);
+      win2.inputEnabled = true;
+      win2.input.enableDrag();
+      closeButtonA2 = game.make.sprite((win2.width / 2) - 30, - (win2.height / 2) - 8, 'close');
+      closeButtonA2.inputEnabled = true;
+      closeButtonA2.input.priorityID = 1;
+      win2.addChild(closeButtonA2);
+      win2.scale.set(0);
+
+      lose2 = game.add.sprite(830, 200, 'lose2');
+      lose2.anchor.set(0.5);
+      lose2.inputEnabled = true;
+      lose2.input.enableDrag();
+      closeButtonB2 = game.make.sprite((lose2.width / 2) - 30, - (lose2.height / 2) - 8, 'close');
+      closeButtonB2.inputEnabled = true;
+      closeButtonB2.input.priorityID = 1;
+      lose2.addChild(closeButtonB2);
+      lose2.scale.set(0);
+
+
+      //question3
+      question3 = game.add.sprite(1555, 250, 'question3');
+      question3.anchor.set(0.5);
+      question3.inputEnabled = true;
+      question3.input.enableDrag();
+      closeButtonG3 = game.make.sprite((question3.width / 2) - 30, - (question3.height / 2) - 8, 'close');
+      optionA3 = game.make.sprite((question1.width / 4) - 440, - (question1.height / 4) + 10, 'close');
+      optionB3 = game.make.sprite((question1.width / 4) - 440, - (question1.height / 4) + 80, 'close');
+      closeButtonG3.inputEnabled = true;
+      optionA3.inputEnabled = true;
+      optionB3.inputEnabled = true;
+      closeButtonG3.input.priorityID = 1;
+      optionA3.input.priorityID = 1;
+      optionB3.input.priorityID = 1;
+      question3.addChild(closeButtonG3);
+      question3.addChild(optionA3);
+      question3.addChild(optionB3);
+      question3.scale.set(0);
+
+      win3 = game.add.sprite(1555, 250, 'win3');
+      win3.anchor.set(0.5);
+      win3.inputEnabled = true;
+      win3.input.enableDrag();
+      closeButtonA3 = game.make.sprite((win3.width / 2) - 30, - (win3.height / 2) - 8, 'close');
+      closeButtonA3.inputEnabled = true;
+      closeButtonA3.input.priorityID = 1;
+      win3.addChild(closeButtonA3);
+      win3.scale.set(0);
+
+      lose3 = game.add.sprite(1555, 250, 'lose3');
+      lose3.anchor.set(0.5);
+      lose3.inputEnabled = true;
+      lose3.input.enableDrag();
+      closeButtonB3 = game.make.sprite((lose3.width / 2) - 30, - (lose3.height / 2) - 8, 'close');
+      closeButtonB3.inputEnabled = true;
+      closeButtonB3.input.priorityID = 1;
+      lose3.addChild(closeButtonB3);
+      lose3.scale.set(0);
+
+      //question4
+      question4 = game.add.sprite(210, 850, 'question4');
+      question4.anchor.set(0.5);
+      question4.inputEnabled = true;
+      question4.input.enableDrag();
+      closeButtonG4 = game.make.sprite((question4.width / 2) - 30, - (question4.height / 2) - 8, 'close');
+      optionA4 = game.make.sprite((question4.width / 2) - 500, - (question4.height / 2) + 120, 'close');
+      optionB4 = game.make.sprite((question4.width / 2) - 500, - (question4.height / 2) + 180, 'close');
+      closeButtonG4.inputEnabled = true;
+      optionA4.inputEnabled = true;
+      optionB4.inputEnabled = true;
+      closeButtonG4.input.priorityID = 1;
+      optionA4.input.priorityID = 1;
+      optionB4.input.priorityID = 1;
+      question4.addChild(closeButtonG4);
+      question4.addChild(optionA4);
+      question4.addChild(optionB4);
+      question4.scale.set(0);
+
+      win4 = game.add.sprite(210, 850, 'win4');
+      win4.anchor.set(0.5);
+      win4.inputEnabled = true;
+      win4.input.enableDrag();
+      closeButtonA4 = game.make.sprite((win4.width / 2) - 30, - (win4.height / 2) - 8, 'close');
+      closeButtonA4.inputEnabled = true;
+      closeButtonA4.input.priorityID = 1;
+      win4.addChild(closeButtonA4);
+      win4.scale.set(0);
+
+      lose4 = game.add.sprite(210, 850, 'lose4');
+      lose4.anchor.set(0.5);
+      lose4.inputEnabled = true;
+      lose4.input.enableDrag();
+      closeButtonB4 = game.make.sprite((lose4.width / 2) - 30, - (lose4.height / 2) - 8, 'close');
+      closeButtonB4.inputEnabled = true;
+      closeButtonB4.input.priorityID = 1;
+      lose4.addChild(closeButtonB4);
+      lose4.scale.set(0);
+
+      //question 5
+      question5 = game.add.sprite(250, 540, 'question5');
+      question5.anchor.set(0.5);
+      question5.inputEnabled = true;
+      question5.input.enableDrag();
+      closeButtonG5 = game.make.sprite((question5.width / 2) - 30, - (question5.height / 2) - 8, 'close');
+      optionA5 = game.make.sprite((question5.width / 2) - 1000, - (question5.height / 2) + 170, 'close');
+      optionB5 = game.make.sprite((question5.width / 2) - 1000, - (question5.height / 2) + 240, 'close');
+      closeButtonG5.inputEnabled = true;
+      optionA5.inputEnabled = true;
+      optionB5.inputEnabled = true;
+      closeButtonG5.input.priorityID = 1;
+      optionA5.input.priorityID = 1;
+      optionB5.input.priorityID = 1;
+      question5.addChild(closeButtonG5);
+      question5.addChild(optionA5);
+      question5.addChild(optionB5);
+      question5.scale.set(0);
+
+      win5 = game.add.sprite(250, 540, 'win5');
+      win5.anchor.set(0.5);
+      win5.inputEnabled = true;
+      win5.input.enableDrag();
+      closeButtonA5 = game.make.sprite((win5.width / 2) - 30, - (win5.height / 2) - 8, 'close');
+      closeButtonA5.inputEnabled = true;
+      closeButtonA5.input.priorityID = 1;
+      win5.addChild(closeButtonA5);
+      win5.scale.set(0);
+
+      lose5 = game.add.sprite(250, 540, 'lose5');
+      lose5.anchor.set(0.5);
+      lose5.inputEnabled = true;
+      lose5.input.enableDrag();
+      closeButtonB5 = game.make.sprite((lose5.width / 2) - 30, - (lose5.height / 2) - 8, 'close');
+      closeButtonB5.inputEnabled = true;
+      closeButtonB5.input.priorityID = 1;
+      lose5.addChild(closeButtonB5);
+      lose5.scale.set(0);
+
 
       popup1 = game.add.sprite(290, 280, 'popup1');
       popup1.anchor.set(0.5);
@@ -248,6 +498,171 @@ popup10.scale.set(0);
 // }﻿
 
 },
+
+
+//question1
+openQuestion1: function () {
+  if ((tweeng1 && tweeng1.isRunning) || question1.scale.x === 1)
+  {  return;  }
+  tweeng1 = game.add.tween(question1.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeQuestion1: function() {
+  if (tweeng1.isRunning || question1.scale.x === 0)
+  {  return;  }
+  tweeng1 = game.add.tween(question1.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openWin1: function () {
+  if ((tweeng1 && tweeng1.isRunning) || win1.scale.x === 1)
+  {  return;  }
+  tweeng1 = game.add.tween(win1.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeWin1: function () {
+  if (tweeng1.isRunning || win1.scale.x === 0)
+  {  return;  }
+  tweeng1 = game.add.tween(win1.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openLose1: function () {
+  if ((tweeng1 && tweeng1.isRunning) || lose1.scale.x === 1)
+  {  return;  }
+  tweeng1 = game.add.tween(lose1.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeLose1: function () {
+  if (tweeng1.isRunning || lose1.scale.x === 0)
+  {  return;  }
+  tweeng1 = game.add.tween(lose1.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+
+
+//question2
+openQuestion2: function () {
+  if ((tweeng2 && tweeng2.isRunning) || question2.scale.x === 1)
+  {  return;  }
+  tweeng2 = game.add.tween(question2.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeQuestion2: function() {
+  if (tweeng2.isRunning || question2.scale.x === 0)
+  {  return;  }
+  tweeng2 = game.add.tween(question2.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openWin2: function () {
+  if ((tweeng2 && tweeng2.isRunning) || win2.scale.x === 1)
+  {  return;  }
+  tweeng2 = game.add.tween(win2.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeWin2: function () {
+  if (tweeng2.isRunning || win2.scale.x === 0)
+  {  return;  }
+  tweeng2 = game.add.tween(win2.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openLose2: function () {
+  if ((tweeng2 && tweeng2.isRunning) || lose2.scale.x === 1)
+  {  return;  }
+  tweeng2 = game.add.tween(lose2.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeLose2: function () {
+  if (tweeng2.isRunning || lose2.scale.x === 0)
+  {  return;  }
+  tweeng2 = game.add.tween(lose2.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+
+
+//question3
+openQuestion3: function () {
+  if ((tweeng3 && tweeng3.isRunning) || question3.scale.x === 1)
+  {  return;  }
+  tweeng3 = game.add.tween(question3.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeQuestion3: function() {
+  if (tweeng3.isRunning || question3.scale.x === 0)
+  {  return;  }
+  tweeng3 = game.add.tween(question3.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openWin3: function () {
+  if ((tweeng3 && tweeng3.isRunning) || win3.scale.x === 1)
+  {  return;  }
+  tweeng3 = game.add.tween(win3.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeWin3: function () {
+  if (tweeng3.isRunning || win3.scale.x === 0)
+  {  return;  }
+  tweeng3 = game.add.tween(win3.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openLose3: function () {
+  if ((tweeng3 && tweeng3.isRunning) || lose3.scale.x === 1)
+  {  return;  }
+  tweeng3 = game.add.tween(lose3.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeLose3: function () {
+  if (tweeng3.isRunning || lose3.scale.x === 0)
+  {  return;  }
+  tweeng3 = game.add.tween(lose3.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+
+//question4
+openQuestion4: function () {
+  if ((tweeng4 && tweeng4.isRunning) || question4.scale.x === 1)
+  {  return;  }
+  tweeng4 = game.add.tween(question4.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeQuestion4: function() {
+  if (tweeng4.isRunning || question4.scale.x === 0)
+  {  return;  }
+  tweeng4 = game.add.tween(question4.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openWin4: function () {
+  if ((tweeng4 && tweeng4.isRunning) || win4.scale.x === 1)
+  {  return;  }
+  tweeng4 = game.add.tween(win4.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeWin4: function () {
+  if (tweeng4.isRunning || win4.scale.x === 0)
+  {  return;  }
+  tweeng4 = game.add.tween(win4.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openLose4: function () {
+  if ((tweeng4 && tweeng4.isRunning) || lose4.scale.x === 1)
+  {  return;  }
+  tweeng4 = game.add.tween(lose4.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeLose4: function () {
+  if (tweeng4.isRunning || lose4.scale.x === 0)
+  {  return;  }
+  tweeng4 = game.add.tween(lose4.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+
+//question5
+openQuestion5: function () {
+  if ((tweeng5 && tweeng5.isRunning) || question5.scale.x === 1)
+  {  return;  }
+  tweeng5 = game.add.tween(question5.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeQuestion5: function() {
+  if (tweeng5.isRunning || question5.scale.x === 0)
+  {  return;  }
+  tweeng5 = game.add.tween(question5.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openWin5: function () {
+  if ((tweeng5 && tweeng5.isRunning) || win5.scale.x === 1)
+  {  return;  }
+  tweeng5 = game.add.tween(win5.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeWin5: function () {
+  if (tweeng5.isRunning || win5.scale.x === 0)
+  {  return;  }
+  tweeng5 = game.add.tween(win5.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+openLose5: function () {
+  if ((tweeng5 && tweeng5.isRunning) || lose5.scale.x === 1)
+  {  return;  }
+  tweeng5 = game.add.tween(lose5.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+},
+closeLose5: function () {
+  if (tweeng5.isRunning || lose5.scale.x === 0)
+  {  return;  }
+  tweeng5 = game.add.tween(lose5.scale).to( { x: 0, y: 0 }, 500, Phaser.Easing.Elastic.In, true);
+},
+
+
 
 openWindow1: function() {
       if ((tween1 && tween1.isRunning) || popup1.scale.x === 1)
@@ -382,6 +797,13 @@ closeWindow10: function () {
       game.physics.arcade.overlap(player, npc9, this.collideWithNPC9, null, this);
       game.physics.arcade.overlap(player, npc10, this.collideWithNPC10, null, this);
 
+      game.physics.arcade.overlap(player, gem1, this.collideWithGem1, null, this);
+      game.physics.arcade.overlap(player, gem2, this.collideWithGem2, null, this);
+      game.physics.arcade.overlap(player, gem3, this.collideWithGem3, null, this);
+      game.physics.arcade.overlap(player, gem4, this.collideWithGem4, null, this);
+      game.physics.arcade.overlap(player, gem5, this.collideWithGem5, null, this);
+
+
       if (this.checkOverlap(bad1, player)) {
     //     this.isHit = true;
     //     var live;
@@ -397,51 +819,79 @@ closeWindow10: function () {
     // }﻿
         player.kill();
         game.state.start('lose');
+        music.stop();
       }
       if (this.checkOverlap(bad2, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad3, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad4, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad5, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad6, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad7, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad8, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad9, player)) {
         player.kill();
         game.state.start('lose');
-
+        music.stop();
       }
       if (this.checkOverlap(bad10, player)) {
         player.kill();
         game.state.start('lose');
+        music.stop();
+      }
 
+      //gems
+      if (this.checkOverlap(gbad1, player)) {
+        player.kill();
+        game.state.start('lose');
+        music.stop();
+      }
+      if (this.checkOverlap(gbad2, player)) {
+        player.kill();
+        game.state.start('lose');
+        music.stop();
+      }
+      if (this.checkOverlap(gbad3, player)) {
+        player.kill();
+        game.state.start('lose');
+        music.stop();
+      }
+      if (this.checkOverlap(gbad4, player)) {
+        player.kill();
+        game.state.start('lose');
+        music.stop();
+      }
+      if (this.checkOverlap(gbad5, player)) {
+        player.kill();
+        game.state.start('lose');
+        music.stop();
       }
 
       player.body.velocity.set(0);
@@ -486,6 +936,71 @@ checkOverlap: function (spriteA, spriteB) {
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 
+},
+collideWithGem1: function (player, gem1)
+{
+  this.openQuestion1();
+  closeButtonG1.events.onInputDown.add(this.closeQuestion1, this);
+  closeButtonA1.events.onInputDown.add(this.closeWin1, this);
+  closeButtonB1.events.onInputDown.add(this.closeLose1, this);
+  optionA1.events.onInputDown.add(this.openLose1, this);
+  optionB1.events.onInputDown.add(this.openWin1, this);
+        gem1.kill();
+        coinMusic.play();
+        score += 50;
+        scoreText.text = scoreString + score;
+},
+collideWithGem2: function (player, gem2)
+{
+  this.openQuestion2();
+  closeButtonG2.events.onInputDown.add(this.closeQuestion2, this);
+  closeButtonA2.events.onInputDown.add(this.closeWin2, this);
+  closeButtonB2.events.onInputDown.add(this.closeLose2, this);
+  optionA2.events.onInputDown.add(this.openLose2, this);
+  optionB2.events.onInputDown.add(this.openWin2, this);
+        gem2.kill();
+        coinMusic.play();
+        score += 50;
+        scoreText.text = scoreString + score;
+},
+collideWithGem3: function (player, gem3)
+{
+  this.openQuestion3();
+  closeButtonG3.events.onInputDown.add(this.closeQuestion3, this);
+  closeButtonA3.events.onInputDown.add(this.closeWin3, this);
+  closeButtonB3.events.onInputDown.add(this.closeLose3, this);
+  optionA3.events.onInputDown.add(this.openWin3, this);
+  optionB3.events.onInputDown.add(this.openLose3, this);
+        gem3.kill();
+        coinMusic.play();
+        score += 50;
+        scoreText.text = scoreString + score;
+},
+collideWithGem4: function (player, gem4)
+{
+  this.openQuestion4();
+  closeButtonG4.events.onInputDown.add(this.closeQuestion4, this);
+  closeButtonA4.events.onInputDown.add(this.closeWin4, this);
+  closeButtonB4.events.onInputDown.add(this.closeLose4, this);
+  optionA4.events.onInputDown.add(this.openLose4, this);
+  optionB4.events.onInputDown.add(this.openWin4, this);
+        gem4.kill();
+        coinMusic.play();
+        score += 50;
+        scoreText.text = scoreString + score;
+},
+collideWithGem5: function (player, gem5)
+{
+  this.openQuestion5();
+  closeButtonG5.events.onInputDown.add(this.closeQuestion5, this);
+  closeButtonA5.events.onInputDown.add(this.closeWin5, this);
+  closeButtonB5.events.onInputDown.add(this.closeLose5, this);
+  optionA5.events.onInputDown.add(this.openWin5, this);
+  optionB5.events.onInputDown.add(this.openLose5, this);
+        gem5.kill();
+        coinMusic.play();
+        score += 50;
+        scoreText.text = scoreString + score;
 },
 collideWithNPC1: function (player, npc1)
 {
